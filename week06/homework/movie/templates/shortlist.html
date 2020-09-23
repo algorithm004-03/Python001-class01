@@ -1,0 +1,55 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>shortlist</title>
+  <link rel="stylesheet" href="../static/css/bootstrap.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">电影评分</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <form class="navbar-form navbar-right">
+          <input id="serch_input" type="search" class="form-control" placeholder="Search..." onsearch="searchShort()">
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <div class="table-responsive" style="top: 50px; position: relative;">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>短评</th>
+          <th>得分</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for short in shorts %}
+        <tr>
+          <td>{{ short.id }}</td>
+          <td>{{ short.short }}</td>
+          <td>{{ short.score }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    function searchShort() {
+      var x = document.getElementById("serch_input").value;
+      console.log(x)
+      window.location.href = window.location.origin + '/movie/' + x;
+    }
+  </script>
+  <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+  <script src="../static/js/bootstrap.js"></script>
+</body>
+
+</html>
